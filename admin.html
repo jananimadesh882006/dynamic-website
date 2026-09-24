@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Music - Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header class="header glass">
+    <a href="index.html" class="brand">
+      <span class="material-icons">headphones</span>
+      Aura Music <span style="font-size: 14px; font-weight: normal; margin-left: 10px; color: var(--text-secondary);">Admin</span>
+    </a>
+    
+    <div class="nav-links">
+      <a href="index.html">Back to Player</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="admin-container">
+      
+      <div class="form-card glass">
+        <h2 style="margin-bottom: 20px;" id="formTitle">Add New Song</h2>
+        <form id="songForm">
+          <input type="hidden" id="songId">
+          
+          <div class="form-group">
+            <label for="title">Song Title *</label>
+            <input type="text" id="title" required placeholder="e.g. Blinding Lights">
+          </div>
+          
+          <div class="form-group">
+            <label for="artist">Artist *</label>
+            <input type="text" id="artist" required placeholder="e.g. The Weeknd">
+          </div>
+          
+          <div class="form-group">
+            <label for="album">Album</label>
+            <input type="text" id="album" placeholder="e.g. After Hours">
+          </div>
+          
+          <div class="form-group">
+            <label for="cover_url">Cover Image URL</label>
+            <input type="url" id="cover_url" placeholder="https://example.com/image.jpg">
+          </div>
+          
+          <div class="form-group">
+            <label for="audio_url">Cloudinary Audio URL *</label>
+            <input type="url" id="audio_url" required placeholder="https://res.cloudinary.com/...">
+          </div>
+          
+          <div style="display: flex; gap: 10px;">
+            <button type="submit" class="btn" id="submitBtn">Add Song</button>
+            <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">Cancel Edit</button>
+          </div>
+          <div id="formMsg" style="margin-top: 15px; font-size: 14px;"></div>
+        </form>
+      </div>
+
+      <div class="form-card glass">
+        <h2 style="margin-bottom: 20px;">Manage Songs</h2>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Album</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="songsTableBody">
+              <!-- Rows populated by JS -->
+            </tbody>
+          </table>
+          <div id="tableLoader" class="loader"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="supabase-client.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

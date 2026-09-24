@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aura Music - Discover & Play</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Supabase CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+  <header class="header glass">
+    <a href="index.html" class="brand">
+      <span class="material-icons">headphones</span>
+      Aura Music
+    </a>
+    
+    <div class="search-bar">
+      <span class="material-icons">search</span>
+      <input type="text" id="searchInput" placeholder="Search for songs, artists, or albums...">
+    </div>
+
+    <div class="nav-links">
+      <a href="admin.html">Admin Panel</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <h1 class="page-title">Discover</h1>
+    <div id="loadingIndicator" class="loader"></div>
+    <div class="song-grid" id="songGrid">
+      <!-- Songs will be populated here via JS -->
+    </div>
+  </main>
+
+  <!-- Audio Element -->
+  <audio id="audioPlayer" preload="metadata"></audio>
+
+  <!-- Player Bar -->
+  <div class="player-bar glass">
+    <div class="now-playing">
+      <img id="playerCover" src="https://images.unsplash.com/photo-1614113489855-66422ad300a4?w=100" alt="Cover" style="opacity: 0;">
+      <div class="song-info">
+        <div class="title" id="playerTitle">Select a song</div>
+        <div class="artist" id="playerArtist">-</div>
+      </div>
+    </div>
+
+    <div class="player-controls">
+      <div class="controls-buttons">
+        <button id="prevBtn"><span class="material-icons">skip_previous</span></button>
+        <button id="playBtn" class="play-btn"><span class="material-icons">play_arrow</span></button>
+        <button id="nextBtn"><span class="material-icons">skip_next</span></button>
+      </div>
+      <div class="progress-container">
+        <span id="currentTime">0:00</span>
+        <div class="progress-bar" id="progressBar">
+          <div class="progress" id="progress"></div>
+        </div>
+        <span id="durationTime">0:00</span>
+      </div>
+    </div>
+
+    <div class="volume-control">
+      <span class="material-icons" id="volumeIcon">volume_up</span>
+      <div class="volume-slider" id="volumeSlider">
+        <div class="volume-level" id="volumeLevel"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="supabase-client.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
